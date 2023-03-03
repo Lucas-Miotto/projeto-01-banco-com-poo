@@ -1,0 +1,25 @@
+<?php
+
+require_once 'src/Conta.php';
+require_once 'src/Titular.php';
+require_once 'src/CPF.php';
+
+$lucas = new Titular(new CPF('123.456.789-10'), 'Lucas Miotto');
+$primeiraConta = new Conta($lucas);
+$primeiraConta->depoista(500);
+$primeiraConta->saca(300);
+
+echo $primeiraConta->recuperaNomeTitular() . PHP_EOL;
+echo $primeiraConta->recuperaCpfTitular() . PHP_EOL;
+echo $primeiraConta->recuperaSaldo() . PHP_EOL;
+
+$patricia = new Titular(new CPF('698.549.548-10'), 'Patricia');
+$segundaConta = new Conta($patricia);
+var_dump($segundaConta);
+
+$outra = new Conta(new Titular(new CPF('123.654.789-01'), 'teste'));
+unset($segundaConta);
+
+echo Conta::recuperaNumeroDeContas();
+
+$teste = new Titular(new CPF('123123123123'), 'Lucas');
